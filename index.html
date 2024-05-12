@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Cadê Buffet? in Vue.js</title>
+</head>
+<body class="bg-[#F1F1F1] p-8">
+  <div id="app">
+    <header class="flex w-full flex-col gap-y-10">
+      <div id="search" class="flex justify-around w-full">
+        <a href="index.html" class="text-xl font-medium mt-2">Cadê Buffet <span class="text-blue-500">LITE</span></a>
+        <input type="text" class="rounded-xl w-96 px-2 border border-gray-500" v-model="searchQuery" placeholder="Procurar um buffet">
+        <a href="http://localhost:3000" class="text-sm font-semibold text-blue-500 hover:underline active:text-blue-800 mt-2">Visitar site oficial</a>
+      </div>
+    </header>
+    <main class="flex flex-col p-4 w-full mt-4">
+      <h1 class="text-sm leading-normal font-bold uppercase mt-2">Lista de Buffets</h1>
+      <h3 v-if="listResult.length <= 0">Nenhum buffet encontrado</h3>
+      <div class="mt-4 flex flex-wrap gap-x-8">
+        <div v-for="buffet, index in listResult">
+          <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white">
+            <div class="px-6 py-4">
+              <p class="font-bold text-xl mb-2">{{ buffet.trading_name }}</p>
+              <p class="text-gray-700 text-base">{{ buffet.description }}</p>
+            </div>
+            <div class="px-6 pb-2">
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                {{ buffet.city }} - {{ buffet.state }}
+              </span>
+              <a href="#" class="inline-block bg-blue-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:underline active:bg-blue-500">Ver mais</a>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+
+<!-- <h2>{{ buffetName }}</h2>
+  <img v-bind:src="pic" v.bind:alt="buffetName">
+  <button v-on:click="changeData">Ver eventos</button>
+  <ul>
+    <li v-for="item in listBuffets">
+      <address>
+        {{ item.name }}
+      </address>
+    </li>
+  </ul> -->
